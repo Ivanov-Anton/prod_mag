@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id                  :bigint           not null, primary key
+#  level_of_quality    :integer
+#  price               :decimal(, )
+#  quantity            :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  department_id       :bigint
+#  product_category_id :bigint
+#  product_id          :bigint
+#
+
+one:
+  product_id: 
+  department_id: 
+  product_category_id: 
+  price: 9.99
+  quantity: 1
+  level_of_quality: 1
+
+two:
+  product_id: 
+  department_id: 
+  product_category_id: 
+  price: 9.99
+  quantity: 1
+  level_of_quality: 1
