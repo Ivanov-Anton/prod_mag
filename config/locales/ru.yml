@@ -7,6 +7,9 @@ ru:
       product_category:
         one: "Категория товаров"
         other: "Категории товаров"
+      department:
+        one: "Отдел магазина"
+        other: "Отделы магазина"
     attributes:
       prod/product:
         level_of_quality: "Сорт товара"
@@ -19,6 +22,10 @@ ru:
         updated_at: "Отредактировано"
         product_category: "Категория товара"
         department: "Отдел магазина"
+      prod/department:
+        name: "Имя"
+        created_at: "Создано"
+        updated_at: "Отредактировано"
       prod/product_category:
         name: "Имя"
         created_at: "Создано"
