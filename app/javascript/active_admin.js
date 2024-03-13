@@ -1,0 +1,1 @@
+//import '@codevise/activeadmin-searchable_select';
