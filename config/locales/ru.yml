@@ -1,0 +1,25 @@
+ru:
+  activerecord:
+    models:
+      product:
+        one: "Товар"
+        other: "Товары"
+      product_category:
+        one: "Категория товаров"
+        other: "Категории товаров"
+    attributes:
+      prod/product:
+        level_of_quality: "Сорт товара"
+        name: "Имя"
+        price: "Цена"
+        quantity_in_stock: "Кол-во на складе"
+        quantity_sold: "Кол-во продано"
+        type_of_measure: "Тип измерения"
+        created_at: "Создано"
+        updated_at: "Отредактировано"
+        product_category: "Категория товара"
+        department: "Отдел магазина"
+      prod/product_category:
+        name: "Имя"
+        created_at: "Создано"
+        updated_at: "Отредактировано"
