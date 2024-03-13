@@ -9,13 +9,11 @@ ActiveAdmin.register Prod::ProductCategory, as: 'product_category' do
 
   index do
     actions
-    id_column
     column :name
   end
 
   show do
     attributes_table do
-      row :id
       row :name
     end
   end

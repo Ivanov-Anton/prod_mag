@@ -9,7 +9,6 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
 
   index do
     selectable_column
-    id_column
     column :name
     column :price
     column :quantity_in_stock
@@ -26,7 +25,6 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
 
   show do
     attributes_table do
-      row :id
       row :name
     end
   end
