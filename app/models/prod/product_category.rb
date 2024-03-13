@@ -9,5 +9,10 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class ProductCategory < ApplicationRecord
+module Prod
+  class ProductCategory < ApplicationRecord
+    def self.ransackable_attributes(auth_object = nil)
+      ["name"]
+    end
+  end
 end
