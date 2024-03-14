@@ -5,6 +5,7 @@ class AddDepartmentTable < ActiveRecord::Migration[7.1]
     create_table :departments do |t|
       t.string :name
       t.integer :products_count, default: 0
+      t.integer :orders_count, default: 0
       t.timestamps
     end
   end
