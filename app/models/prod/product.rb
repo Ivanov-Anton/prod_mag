@@ -27,6 +27,15 @@ module Prod
     validates :department, presence: { message: 'Отдел магазина не может быть пустым' }
     validates :product_category, presence: { message: 'Категория товара не может быть пустым' }
 
+    before_create do
+      self.department.update!(products_count: self.department.products_count + quantity_in_stock)
+    end
+
+    before_update do
+      value = Prod::Product.where(department_id: self.department_id).sum(:quantity_in_stock)
+      department.update!(products_count: value)
+    end
+
     module CONST
       LEVEL_OF_QUALITY_FIRST = 'Первый сорт'
       LEVEL_OF_QUALITY_SECOND = 'Второй сорт'
