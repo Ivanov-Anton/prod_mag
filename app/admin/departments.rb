@@ -12,6 +12,9 @@ ActiveAdmin.register Prod::Department, as: 'department' do
     column do |department|
       link_to "Кол-во товаров (#{department.products_count})", admin_products_path(q: { department_id_eq: department.id }), class: 'button'
     end
+    column do |department|
+      link_to "Кол-во заказов (#{department.orders_count})", admin_orders_path(q: { department_id_eq: department.id }), class: 'button'
+    end
     actions
   end
 
