@@ -10,7 +10,16 @@ ru:
       department:
         one: "Отдел магазина"
         other: "Отделы магазина"
+      order:
+        one: "Продажа"
+        other: "Продажи"
     attributes:
+      prod/order:
+        product: "Товар"
+        quantity: "Количество"
+        price: "Цена"
+        created_at: "Создано"
+        updated_at: "Отредактировано"
       prod/product:
         level_of_quality: "Сорт товара"
         name: "Имя"
