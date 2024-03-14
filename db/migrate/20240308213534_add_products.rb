@@ -7,7 +7,7 @@ class AddProducts < ActiveRecord::Migration[7.1]
       t.integer :quantity_sold
       t.integer :quantity_in_stock
       t.integer :product_category_id
-      t.integer :orders_count
+      t.integer :orders_count, default: 0
       t.integer :level_of_quality
       t.string :type_of_measure
 

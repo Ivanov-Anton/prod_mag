@@ -4,8 +4,8 @@
 #
 #  id             :bigint           not null, primary key
 #  name           :string
-#  orders_count   :integer
-#  products_count :integer
+#  orders_count   :integer          default(0)
+#  products_count :integer          default(0)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

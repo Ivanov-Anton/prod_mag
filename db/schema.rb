@@ -49,8 +49,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_11_192046) do
 
   create_table "product_categories", force: :cascade do |t|
     t.string "name"
-    t.integer "products_count"
-    t.integer "orders_count"
+    t.integer "products_count", default: 0
+    t.integer "orders_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_11_192046) do
     t.integer "quantity_sold"
     t.integer "quantity_in_stock"
     t.integer "product_category_id"
-    t.integer "orders_count"
+    t.integer "orders_count", default: 0
     t.integer "level_of_quality"
     t.string "type_of_measure"
     t.datetime "created_at", null: false

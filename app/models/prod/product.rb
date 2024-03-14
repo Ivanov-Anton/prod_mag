@@ -7,7 +7,7 @@
 #  id                  :bigint           not null, primary key
 #  level_of_quality    :integer
 #  name                :string
-#  orders_count        :integer
+#  orders_count        :integer          default(0)
 #  price               :decimal(, )
 #  quantity_in_stock   :integer
 #  quantity_sold       :integer
