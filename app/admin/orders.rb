@@ -12,7 +12,18 @@ ActiveAdmin.register Prod::Order, as: 'order' do
     selectable_column
     column :price
     column :product
-    column :quantity
+    column :quantity do |order|
+      case order&.product&.type_of_measure
+      when Prod::Product::CONST::TYPES_OF_MEASURE_VALUE_EACH
+        suffix = 'шт'
+      else
+        suffix = Prod::Product::CONST::TYPES_OF_MEASURE.invert.fetch(order&.product&.type_of_measure, 'asd')
+      end
+      "#{order.quantity} #{suffix}"
+    end
+    column :total_price do |order|
+      order.price * order.quantity
+    end
     actions
   end
 
