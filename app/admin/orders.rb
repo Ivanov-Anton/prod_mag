@@ -22,6 +22,8 @@ ActiveAdmin.register Prod::Order, as: 'order' do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.attribute_names
+
     f.inputs do
       f.input :quantity, as: :number, input_html: { autofocus: :autofocus }
       f.input :product, as: :searchable_select
