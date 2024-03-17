@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Prod::Order, as: 'order' do
-  actions :index, :show, :create, :new
+  actions :index, :show, :create, :new, :destroy
+  config.filters = false
+
   permit_params do
     %w[quantity product_id]
   end
