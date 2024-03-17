@@ -33,14 +33,24 @@ module Prod
     end
 
     before_update do
-      value = Prod::Product.where(department_id: self.department_id).sum(:quantity_in_stock)
-      department.update!(products_count: value)
+      if quantity_in_stock_changed?
+        value = Prod::Product.where('department_id = ? AND products.id != ?', self.department_id, self.id).sum(:quantity_in_stock)
+        department.update!(products_count: value + quantity_in_stock)
+      end
+    end
+
+    before_destroy do
+      self.department.update!(products_count: self.department.products_count - quantity_in_stock)
     end
 
     module CONST
       LEVEL_OF_QUALITY_FIRST = 'Первый сорт'
       LEVEL_OF_QUALITY_SECOND = 'Второй сорт'
       LEVEL_OF_QUALITY_THIRD = 'Третий сорт'
+
+      LEVEL_OF_QUALITY_VALUE_FIRST = 1
+      LEVEL_OF_QUALITY_VALUE_SECOND = 2
+      LEVEL_OF_QUALITY_VALUE_THIRD = 3
 
       LEVEL_OF_QUALITIES = {
         LEVEL_OF_QUALITY_FIRST => 1,
@@ -52,6 +62,11 @@ module Prod
       TYPES_OF_MEASURE_LITERS = 'Литры'
       TYPES_OF_MEASURE_EACH = 'Поштучно'
       TYPES_OF_MEASURE_TONNES = 'Тонны'
+
+      TYPES_OF_MEASURE_VALUE_KG = 'kg'
+      TYPES_OF_MEASURE_VALUE_LITERS = 'liters'
+      TYPES_OF_MEASURE_VALUE_EACH = 'each'
+      TYPES_OF_MEASURE_VALUE_TONNES = 'tonnes'
 
       TYPES_OF_MEASURE = {
         TYPES_OF_MEASURE_KG => 'kg',
