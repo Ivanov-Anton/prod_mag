@@ -15,8 +15,7 @@ ActiveAdmin.setup do |config|
   # instead of a string (overrides :site_title)
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
-  #
-  # config.site_title_image = "logo.png"
+  config.site_title_image = 'logo.jpg'
 
   # == Load Paths
   #
