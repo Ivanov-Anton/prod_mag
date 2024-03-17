@@ -13,6 +13,14 @@
 #
 module Prod
   class Department < ApplicationRecord
+
+    has_many :products, class_name: 'Prod::Product'
+    has_many :orders, class_name: 'Prod::Order'
+
+    def self.ransackable_associations(auth_object = nil)
+      ["products", 'orders']
+    end
+
     def self.ransackable_attributes(auth_object = nil)
       %w[created_at id id_value name updated_at]
     end
