@@ -18,6 +18,7 @@ ru:
         product: "Товар"
         quantity: "Количество"
         price: "Цена"
+        total_price: "Итоговая цена"
         created_at: "Создано"
         updated_at: "Отредактировано"
       prod/product:
@@ -39,3 +40,11 @@ ru:
         name: "Имя"
         created_at: "Создано"
         updated_at: "Отредактировано"
+    errors:
+      models:
+        prod/order:
+          attributes:
+            product:
+              blank: "не может быть пустым"
+  active_admin:
+    create_another: "Создать еще"
