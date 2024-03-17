@@ -1,0 +1,31 @@
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: products
+#
+#  id                  :bigint           not null, primary key
+#  level_of_quality    :integer
+#  name                :string
+#  orders_count        :integer          default(0)
+#  price               :decimal(, )
+#  quantity_in_stock   :integer          default(0)
+#  quantity_sold       :integer          default(0)
+#  size_of_batch       :integer
+#  type_of_measure     :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  department_id       :integer
+#  product_category_id :integer
+#
+
+product_one:
+  level_of_quality: 1
+  name: MyProduct
+  price: 10.0
+  quantity_in_stock: 10
+  quantity_sold: 0
+  type_of_measure: each
+  department_id: 1
+  created_at: 2019-10-01 00:00:00
+  updated_at: 2019-10-01 00:00:00

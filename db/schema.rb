@@ -59,11 +59,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_11_192046) do
     t.string "name"
     t.decimal "price"
     t.integer "department_id"
-    t.integer "quantity_sold"
-    t.integer "quantity_in_stock"
+    t.integer "quantity_sold", default: 0
+    t.integer "quantity_in_stock", default: 0
     t.integer "product_category_id"
     t.integer "orders_count", default: 0
     t.integer "level_of_quality"
+    t.integer "size_of_batch"
     t.string "type_of_measure"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

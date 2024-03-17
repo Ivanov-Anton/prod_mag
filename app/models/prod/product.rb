@@ -9,8 +9,9 @@
 #  name                :string
 #  orders_count        :integer          default(0)
 #  price               :decimal(, )
-#  quantity_in_stock   :integer
-#  quantity_sold       :integer
+#  quantity_in_stock   :integer          default(0)
+#  quantity_sold       :integer          default(0)
+#  size_of_batch       :integer
 #  type_of_measure     :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
@@ -64,6 +65,7 @@ module Prod
 
     belongs_to :department, class_name: 'Prod::Department', foreign_key: :department_id, optional: true
     belongs_to :product_category, class_name: 'Prod::ProductCategory', foreign_key: :product_category_id, optional: true
+    has_many :orders, class_name: 'Prod::Order'
 
     def self.ransackable_attributes(auth_object = nil)
       %w[created_at department_id level_of_quality id id_value name orders_count price product_category_id quantity_in_stock quantity_sold updated_at type_of_measure]
