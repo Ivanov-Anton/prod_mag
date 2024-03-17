@@ -25,6 +25,8 @@ ActiveAdmin.register Prod::Department, as: 'department' do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.attribute_names
+
     f.inputs do
       f.input :name, input_html: { autofocus: :autofocus }
     end
