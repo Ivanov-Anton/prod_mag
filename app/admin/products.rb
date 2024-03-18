@@ -22,22 +22,6 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
             }
   end
 
-  action_item :find_empty_department, only: :index do
-    link_to 'Какие товары по отделам отсутствуют', admin_find_empty_departments_path(order: 'departments.id_desc')
-  end
-
-  action_item :department_with_max_min_value, only: :index do
-    link_to 'Отделы с максимальной и минимальной прибылью', admin_department_with_max_min_value_path
-  end
-
-  action_item :department_with_max_min_value, only: :index do
-    link_to 'Какой товар дал максимальную прибыль в магазине?', admin_most_valuable_products_path
-  end
-
-  action_item :department_with_max_min_value, only: :index do
-    link_to 'Стоимость товаров для пополнения', admin_cost_of_goods_for_replenishments_path
-  end
-
   index do
     selectable_column
     column :name

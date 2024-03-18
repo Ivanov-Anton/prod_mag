@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Prod::Product, as: 'find_empty_department' do
-  menu false
+  menu label: 'Какие товары по отделам отсутствуют', parent: 'Actions'
   actions :index
   config.filters = false
 

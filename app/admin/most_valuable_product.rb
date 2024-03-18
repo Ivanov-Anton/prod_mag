@@ -2,7 +2,7 @@
 
 ActiveAdmin.register Prod::Product, as: 'most_valuable_product' do
   actions :index
-  menu false
+  menu label: 'Какой товар дал максимальную прибыль в магазине?', parent: 'Actions'
   config.filters = false
   config.paginate = false
   config.max_per_page = 1

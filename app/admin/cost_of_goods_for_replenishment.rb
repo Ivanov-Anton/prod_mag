@@ -2,7 +2,7 @@
 
 ActiveAdmin.register Prod::Product, as: 'cost_of_goods_for_replenishment' do
   actions :index
-  menu false
+  menu label: 'Стоимость товаров для пополнения', parent: 'Actions'
   config.filters = false
 
   controller do
