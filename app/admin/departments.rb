@@ -8,7 +8,7 @@ ActiveAdmin.register Prod::Department, as: 'department' do
     ["name"]
   end
 
-  index do
+  index download_links: [:csv] do
     selectable_column
     column :name
     column do |department|
