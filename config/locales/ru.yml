@@ -23,7 +23,7 @@ ru:
         updated_at: "Отредактировано"
       prod/product:
         level_of_quality: "Сорт товара"
-        size_of_batch: "Размер закупочной партии"
+        size_of_batch: "Размер партии"
         name: "Имя"
         price: "Цена"
         quantity_in_stock: "Кол-во на складе"
