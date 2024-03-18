@@ -36,6 +36,9 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
     column :type_of_measure do |product|
       Prod::Product::CONST::TYPES_OF_MEASURE.invert.fetch(product.type_of_measure)
     end
+    column 'Прибыль' do |product|
+      number_with_delimiter(product.orders.sum('price * quantity'), delimiter: ' ')
+    end
     actions
   end
 
