@@ -27,6 +27,7 @@ module Prod
     validates :type_of_measure, presence: { message: 'Тип измерения не может быть пустым' }
     validates :department, presence: { message: 'Отдел магазина не может быть пустым' }
     validates :product_category, presence: { message: 'Категория товара не может быть пустым' }
+    validates :size_of_batch, presence: { message: 'Размер закупочной партии не может быть пустым' }
 
     before_create do
       self.department.update!(products_count: self.department.products_count + quantity_in_stock)
