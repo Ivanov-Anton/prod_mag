@@ -49,5 +49,23 @@ ru:
           attributes:
             product:
               blank: "не может быть пустым"
+        prod/product:
+          attributes:
+            name:
+              blank: "не может быть пустым"
+            level_of_quality:
+              blank: "не может быть пустым"
+            price:
+              blank: "не может быть пустым"
+            quantity_in_stock:
+              blank: "не может быть пустым"
+            type_of_measure:
+              blank: "не может быть пустым"
+            department:
+              blank: "не может быть пустым"
+            product_category:
+              blank: "не может быть пустым"
+            size_of_batch:
+              blank: "не может быть пустым"
   active_admin:
     create_another: "Создать еще"

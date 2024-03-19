@@ -16,8 +16,8 @@ ActiveAdmin.register Prod::Product, as: 'cost_of_goods_for_replenishment' do
     column :name
     column :quantity_in_stock
     column 'Для того что закупить товар необходимо' do |product|
-      t_of_measure = Prod::Product::CONST::TYPES_OF_MEASURE.invert.fetch(product.type_of_measure)
-      "#{product.price * product.size_of_batch} грн. (для закупки #{product.size_of_batch} #{t_of_measure.downcase} товара)"
+      t_of_m = Prod::Product::CONST::TYPES_OF_MEASURE.invert.fetch(product.type_of_measure)
+      "#{product.price * product.size_of_batch} грн. (для закупки #{product.size_of_batch} #{t_of_m.downcase} товара)"
     end
   end
 end

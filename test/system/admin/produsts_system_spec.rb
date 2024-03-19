@@ -52,7 +52,8 @@ class ProductsTest < ApplicationSystemTestCase
     fill_in 'Имя', with: 'Bread2'
     click_on 'Обновить'
     assert_text 'Bread2'
-    assert department.reload.products_count == 5, "Department products count should be 5, but it is #{department.reload.products_count}"
+    err_msg = "Department products count should be 5, but it is #{department.reload.products_count}"
+    assert department.reload.products_count == 5, err_msg
   end
 
   test 'edit quantity_in_stock of product' do
@@ -78,7 +79,7 @@ class ProductsTest < ApplicationSystemTestCase
     assert department.reload.products_count == 6
   end
 
-  test "edit 'quantity_in_stock' of product with other products" do
+  test 'edit "quantity_in_stock" of product with other products' do
     department = Prod::Department.create!(name: 'Bakery')
     Prod::ProductCategory.create!(name: 'Bread')
     product = Prod::Product.create!(
@@ -109,15 +110,17 @@ class ProductsTest < ApplicationSystemTestCase
     click_link 'Изменить Товар'
     fill_in 'Кол-во', with: '6'
     click_on 'Обновить'
-    assert department.reload.products_count == 11, "Department products count should be 11, but it is #{department.reload.products_count}"
+    err_msg = "Department products count should be 11, but it is #{department.reload.products_count}"
+    assert department.reload.products_count == 11, err_msg
   end
 
   test 'when there is one product and delete them' do
     visit admin_product_path(Prod::Product.last!)
     accept_confirm { click_link 'Удалить Товар' }
     assert_text 'Пока нет Товары. Создать'
-    assert Prod::Product.count == 0, "Product count should be 0, but it is #{Prod::Product.count}"
-    assert Prod::Department.last!.products_count == 0, "Department products count should be 0, but it is #{Prod::Department.last!.products_count}"
+    assert Prod::Product.count.zero?, "Product count should be 0, but it is #{Prod::Product.count}"
+    err_msg = "Department products count should be 0, but it is #{Prod::Department.last!.products_count}"
+    assert Prod::Department.last!.products_count.zero?, err_msg
   end
 
   test 'when there is two products and delete one of them' do
@@ -137,6 +140,7 @@ class ProductsTest < ApplicationSystemTestCase
     accept_confirm { click_link 'Удалить Товар' }
     assert_text 'Товары'
     assert Prod::Product.count == 1, "Product count should be 1, but it is #{Prod::Product.count}"
-    assert Prod::Department.last!.products_count == 10, "Department products count should be 10, but it is #{Prod::Department.last!.products_count}"
+    err_msg = "Department products count should be 10, but it is #{Prod::Department.last!.products_count}"
+    assert Prod::Department.last!.products_count == 10, err_msg
   end
 end

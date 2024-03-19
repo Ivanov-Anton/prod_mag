@@ -12,13 +12,21 @@ ActiveAdmin.register Prod::Department, as: 'department' do
     selectable_column
     column :name
     column do |department|
-      link_to "Кол-во товаров (#{department.products_count})", admin_products_path(q: { department_id_eq: department.id }), class: 'button'
+      link_to(
+        "Кол-во товаров (#{department.products_count})",
+        admin_products_path(q: { department_id_eq: department.id }),
+        class: 'button'
+      )
     end
     column do |department|
-      link_to "Кол-во продаж (#{department.orders_count})", admin_orders_path(q: { department_id_eq: department.id }), class: 'button'
+      link_to(
+        "Кол-во продаж (#{department.orders_count})",
+        admin_orders_path(q: { department_id_eq: department.id }),
+        class: 'button'
+      )
     end
     column('Всего прибыли', sortable: false) do |department|
-      "#{number_with_delimiter(department.orders.sum('price * quantity'), delimiter: " ")} грн."
+      "#{number_with_delimiter(department.orders.sum('price * quantity'), delimiter: ' ')} грн."
     end
     actions
   end

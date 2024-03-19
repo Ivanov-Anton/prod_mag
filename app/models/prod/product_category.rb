@@ -12,10 +12,11 @@
 #  updated_at     :datetime         not null
 #
 module Prod
+  # no doc
   class ProductCategory < ApplicationRecord
     validates :name, presence: { message: 'Имя не может быть пустым' }
 
-    def self.ransackable_attributes(auth_object = nil)
+    def self.ransackable_attributes(_auth_object = nil)
       ['name']
     end
   end

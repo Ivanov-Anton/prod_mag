@@ -15,6 +15,7 @@
 #  product_id          :bigint
 #
 module Prod
+  # no doc
   class Order < ApplicationRecord
     self.table_name = 'orders'
 
@@ -42,11 +43,11 @@ module Prod
       product.department.update!(orders_count: product.department.orders_count + 1, products_count: product.quantity_in_stock)
     end
 
-    def self.ransackable_attributes(auth_object = nil)
+    def self.ransackable_attributes(_auth_object = nil)
       %w[created_at updated_at id id_value level_of_quality price quantity department_id product_category_id product_id]
     end
 
-    def self.ransackable_associations(auth_object = nil)
+    def self.ransackable_associations(_auth_object = nil)
       %w[department product product_category]
     end
   end

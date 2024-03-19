@@ -1,0 +1,22 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+    - 'test/**/*'
+    - 'lib/**/*'
+
+Style/Documentation:
+  Exclude:
+    - 'db/migrate/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/**/*'
+    - 'app/admin/**/*'

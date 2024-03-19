@@ -12,6 +12,7 @@
 #  updated_at     :datetime         not null
 #
 module Prod
+  # no doc
   class Department < ApplicationRecord
 
     has_many :products, class_name: 'Prod::Product'
@@ -19,11 +20,11 @@ module Prod
 
     validates :name, presence: { message: 'Имя не может быть пустым' }
 
-    def self.ransackable_associations(auth_object = nil)
+    def self.ransackable_associations(_auth_object = nil)
       ['products', 'orders']
     end
 
-    def self.ransackable_attributes(auth_object = nil)
+    def self.ransackable_attributes(_auth_object = nil)
       %w[created_at id id_value name updated_at]
     end
   end

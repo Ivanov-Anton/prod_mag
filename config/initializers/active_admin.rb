@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   config.site_title = 'Продмаг'
   config.site_title_link = '/admin/products'
 
-  # Note: Aim for an image that's 21px high so it fits in the header.
+  # NOTE: Aim for an image that's 21px high so it fits in the header.
   config.site_title_image = 'logo.jpg'
 
   # == Load Paths
@@ -163,7 +163,7 @@ ActiveAdmin.setup do |config|
   # You can exclude possibly sensitive model attributes from being displayed,
   # added to forms, or exported by default by ActiveAdmin
   #
-  config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
+  config.filter_attributes = %i[encrypted_password password password_confirmation]
 
   # == Localize Date/Time Format
   #
