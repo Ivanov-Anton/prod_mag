@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ActiveAdmin.setup do |config|
   config.site_title = 'Продмаг'
   config.site_title_link = '/admin/products'
