@@ -11,6 +11,8 @@ class ProductsTest < ApplicationSystemTestCase
   end
 
   test "create a product" do
+    subject = proc { click_on 'Создать' }
+
     Prod::Department.create!(name: 'Bakery')
     Prod::ProductCategory.create!(name: 'Bread')
     visit admin_products_path
@@ -20,8 +22,12 @@ class ProductsTest < ApplicationSystemTestCase
     select 'Bread', from: 'Категория товара'
     fill_in 'Имя', with: 'Bread'
     fill_in 'Цена', with: '10'
+    fill_in 'Размер партии', with: '300'
 
-    click_on 'Создать'
+    assert_changes -> { Prod::Product.count } do
+      subject.call
+    end
+
     assert_text 'Bread'
   end
 
@@ -36,7 +42,8 @@ class ProductsTest < ApplicationSystemTestCase
       level_of_quality: 1,
       type_of_measure: 'each',
       quantity_in_stock: 5,
-      quantity_sold: 0
+      quantity_sold: 0,
+      size_of_batch: 20
     )
     assert department.reload.products_count == 5
     visit admin_product_path(product)
@@ -59,7 +66,8 @@ class ProductsTest < ApplicationSystemTestCase
       level_of_quality: 1,
       type_of_measure: 'each',
       quantity_in_stock: 5,
-      quantity_sold: 0
+      quantity_sold: 0,
+      size_of_batch: 20
     )
     assert department.reload.products_count == 5
     visit admin_product_path(product)
@@ -81,7 +89,8 @@ class ProductsTest < ApplicationSystemTestCase
       level_of_quality: 1,
       type_of_measure: 'each',
       quantity_in_stock: 5,
-      quantity_sold: 0
+      quantity_sold: 0,
+      size_of_batch: 300
     )
     Prod::Product.create!(
       name: 'Bread 2',
@@ -91,7 +100,8 @@ class ProductsTest < ApplicationSystemTestCase
       level_of_quality: 1,
       type_of_measure: 'each',
       quantity_in_stock: 5,
-      quantity_sold: 0
+      quantity_sold: 0,
+      size_of_batch: 300
     )
     assert department.reload.products_count == 10
     visit admin_product_path(product)
@@ -119,7 +129,8 @@ class ProductsTest < ApplicationSystemTestCase
       level_of_quality: 1,
       type_of_measure: 'each',
       quantity_in_stock: 5,
-      quantity_sold: 0
+      quantity_sold: 0,
+      size_of_batch: 20
     )
 
     visit admin_product_path(second_product)
