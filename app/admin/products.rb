@@ -4,6 +4,7 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
   actions :all
 
   config.filters = false
+  config.paginate = false
 
   permit_params do
     [:level_of_quality, :name, :orders_count, :price, :product_category_id, :quantity_in_stock, :quantity_sold, :department_id, :type_of_measure, :size_of_batch]
