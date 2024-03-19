@@ -86,7 +86,7 @@ module Prod
     belongs_to :product_category, class_name: 'Prod::ProductCategory', optional: true
     has_many :orders, class_name: 'Prod::Order', dependent: nil
 
-    def self.ransackable_attributes(_auth_object = nil) # rubocop:disable Metrics/MethodLength
+    def self.ransackable_attributes(_auth_object = nil)
       %w[
         created_at
         department_id
