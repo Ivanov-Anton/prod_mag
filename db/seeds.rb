@@ -45,5 +45,3 @@ end
 rescue ActiveRecord::RecordInvalid => e
   next
 end
-
-
