@@ -42,6 +42,8 @@ ru:
         created_at: "Создано"
         updated_at: "Отредактировано"
     errors:
+      messages:
+        record_invalid: "Проверка не удалась %{errors}"
       models:
         prod/order:
           attributes:
