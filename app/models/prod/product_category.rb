@@ -14,7 +14,7 @@ module Prod
     validates :name, presence: { message: 'Имя не может быть пустым' }
 
     def self.ransackable_attributes(auth_object = nil)
-      ["name"]
+      ['name']
     end
   end
 end

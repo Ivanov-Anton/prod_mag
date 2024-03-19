@@ -1,6 +1,6 @@
 ActiveAdmin.setup do |config|
-  config.site_title = "Продмаг"
-  config.site_title_link = "/admin/products"
+  config.site_title = 'Продмаг'
+  config.site_title_link = '/admin/products'
 
   # Note: Aim for an image that's 21px high so it fits in the header.
   config.site_title_image = 'logo.jpg'

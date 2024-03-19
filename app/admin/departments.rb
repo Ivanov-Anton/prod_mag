@@ -5,7 +5,7 @@ ActiveAdmin.register Prod::Department, as: 'department' do
   config.filters = false
   config.create_another = true
   permit_params do
-    ["name"]
+    ['name']
   end
 
   index download_links: [:csv] do

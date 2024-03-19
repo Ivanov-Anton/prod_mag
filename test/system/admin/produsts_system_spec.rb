@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "application_system_test_case"
+require 'application_system_test_case'
 
 class ProductsTest < ApplicationSystemTestCase
-  test "visit index page" do
+  test 'visit index page' do
     visit admin_products_path
 
     assert_text 'Создать Товар'
     assert_text 'Товары'
   end
 
-  test "create a product" do
+  test 'create a product' do
     subject = proc { click_on 'Создать' }
 
     Prod::Department.create!(name: 'Bakery')
@@ -31,7 +31,7 @@ class ProductsTest < ApplicationSystemTestCase
     assert_text 'Bread'
   end
 
-  test "edit name of product" do
+  test 'edit name of product' do
     department = Prod::Department.create!(name: 'Bakery')
     Prod::ProductCategory.create!(name: 'Bread')
     product = Prod::Product.create!(
@@ -55,7 +55,7 @@ class ProductsTest < ApplicationSystemTestCase
     assert department.reload.products_count == 5, "Department products count should be 5, but it is #{department.reload.products_count}"
   end
 
-  test "edit quantity_in_stock of product" do
+  test 'edit quantity_in_stock of product' do
     department = Prod::Department.create!(name: 'Bakery')
     Prod::ProductCategory.create!(name: 'Bread')
     product = Prod::Product.create!(
@@ -112,7 +112,7 @@ class ProductsTest < ApplicationSystemTestCase
     assert department.reload.products_count == 11, "Department products count should be 11, but it is #{department.reload.products_count}"
   end
 
-  test "when there is one product and delete them" do
+  test 'when there is one product and delete them' do
     visit admin_product_path(Prod::Product.last!)
     accept_confirm { click_link 'Удалить Товар' }
     assert_text 'Пока нет Товары. Создать'
@@ -120,7 +120,7 @@ class ProductsTest < ApplicationSystemTestCase
     assert Prod::Department.last!.products_count == 0, "Department products count should be 0, but it is #{Prod::Department.last!.products_count}"
   end
 
-  test "when there is two products and delete one of them" do
+  test 'when there is two products and delete one of them' do
     second_product = Prod::Product.create!(
       name: 'Bread',
       price: 10,

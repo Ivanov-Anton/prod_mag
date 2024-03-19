@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "application_system_test_case"
+require 'application_system_test_case'
 
 class DepartmentSystemTest < ApplicationSystemTestCase
-  test "visit index page" do
+  test 'visit index page' do
     visit admin_departments_path
 
     assert_text 'Отделы магазина'

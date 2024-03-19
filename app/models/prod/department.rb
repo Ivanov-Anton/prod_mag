@@ -20,7 +20,7 @@ module Prod
     validates :name, presence: { message: 'Имя не может быть пустым' }
 
     def self.ransackable_associations(auth_object = nil)
-      ["products", 'orders']
+      ['products', 'orders']
     end
 
     def self.ransackable_attributes(auth_object = nil)
