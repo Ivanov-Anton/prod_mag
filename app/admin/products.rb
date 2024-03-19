@@ -58,12 +58,12 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
   form do |f|
     f.inputs do
       f.input :name, input_html: { autofocus: :autofocus }
-      f.input :department, as: :searchable_select, collection: Prod::Department.all, hint: link_to('Создать отдел', new_admin_department_path, target: '_blank')
+      f.input :department, as: :searchable_select, hint: link_to('Создать отдел', new_admin_department_path, target: '_blank'), ajax: true
       f.input :level_of_quality, as: :searchable_select, collection: Prod::Product::CONST::LEVEL_OF_QUALITIES, selected: Prod::Product::CONST::LEVEL_OF_QUALITY_VALUE_FIRST
       f.input :type_of_measure, as: :searchable_select, collection: Prod::Product::CONST::TYPES_OF_MEASURE, selected: Prod::Product::CONST::TYPES_OF_MEASURE_VALUE_EACH
       f.input :price, as: :number, placeholder: 'Цена в грн', hint: 'Цена за один товар'
       f.input :quantity_in_stock, as: :number, label: 'Кол-во', input_html: { value: f.object.quantity_in_stock.zero? ? 1 : f.object.quantity_in_stock }
-      f.input :product_category, as: :searchable_select, collection: Prod::ProductCategory.all, hint: link_to('Создать категорию', new_admin_product_category_path, target: '_blank')
+      f.input :product_category, as: :searchable_select, hint: link_to('Создать категорию', new_admin_product_category_path, target: '_blank'), ajax: true
       f.input :size_of_batch
     end
 
@@ -73,4 +73,6 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
       f.cancel_link
     end
   end
+
+  searchable_select_options(scope: Prod::Product.all, text_attribute: :name)
 end

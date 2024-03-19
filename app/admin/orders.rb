@@ -39,7 +39,7 @@ ActiveAdmin.register Prod::Order, as: 'order' do
 
     f.inputs do
       f.input :quantity, as: :number, input_html: { autofocus: :autofocus }
-      f.input :product, as: :searchable_select
+      f.input :product, as: :searchable_select, ajax: { resource: 'Product' }
     end
     f.actions do
       verb = f.object.persisted? ? 'Редактировать' : 'Создать'

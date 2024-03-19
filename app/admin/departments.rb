@@ -43,4 +43,6 @@ ActiveAdmin.register Prod::Department, as: 'department' do
       f.cancel_link
     end
   end
+
+  searchable_select_options(scope: Prod::Department.all, text_attribute: :name)
 end

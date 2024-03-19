@@ -34,4 +34,6 @@ ActiveAdmin.register Prod::ProductCategory, as: 'product_category' do
       f.cancel_link
     end
   end
+
+  searchable_select_options(scope: Prod::ProductCategory.all, text_attribute: :name)
 end
