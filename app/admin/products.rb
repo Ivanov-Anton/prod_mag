@@ -3,8 +3,8 @@
 ActiveAdmin.register Prod::Product, as: 'Product' do
   actions :all
 
-  config.filters = false
   config.paginate = false
+  filter :department, as: :searchable_select, ajax: true
 
   permit_params do
     [:level_of_quality, :name, :orders_count, :price, :product_category_id, :quantity_in_stock, :quantity_sold, :department_id, :type_of_measure, :size_of_batch]
@@ -14,19 +14,6 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
     def scoped_collection
       super.includes(:department).select('products.*, SUM(orders.price * orders.quantity) AS total_profit').left_joins(:orders).group('products.id')
     end
-  end
-
-  action_item :product_by_specific_department, only: :index do
-
-    link_to 'Список товаров в отделе магазинов',
-            admin_receive_products_by_departments_path,
-            class: 'modal-link',
-            data: {
-              method: :get,
-              inputs: {
-                'Выберите отдел магазина': Prod::Department.all.map { |department| [department.name, department.id] }
-              }.to_json
-            }
   end
 
   index do
