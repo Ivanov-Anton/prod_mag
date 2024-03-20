@@ -24,9 +24,7 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
     column :quantity_sold
     column :department
     column :size_of_batch
-    column :level_of_quality do |product|
-      Prod::Product::CONST::LEVEL_OF_QUALITIES.invert.fetch(product.level_of_quality)
-    end
+    column :level_of_quality
     column :type_of_measure do |product|
       Prod::Product::CONST::TYPES_OF_MEASURE.invert.fetch(product.type_of_measure)
     end
@@ -46,7 +44,7 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
     f.inputs do
       f.input :name, input_html: { autofocus: :autofocus }
       f.input :department, as: :searchable_select, hint: link_to('Создать отдел', new_admin_department_path, target: '_blank'), ajax: true
-      f.input :level_of_quality, as: :searchable_select, collection: Prod::Product::CONST::LEVEL_OF_QUALITIES, selected: Prod::Product::CONST::LEVEL_OF_QUALITY_VALUE_FIRST
+      f.input :level_of_quality, as: :searchable_select, collection: Prod::Product::CONST::PLAIN_LEVEL_OF_QUALITIES
       f.input :type_of_measure, as: :searchable_select, collection: Prod::Product::CONST::TYPES_OF_MEASURE, selected: Prod::Product::CONST::TYPES_OF_MEASURE_VALUE_EACH
       f.input :price, as: :number, placeholder: 'Цена в грн', hint: 'Цена за один товар'
       f.input :quantity_in_stock, as: :number, label: 'Кол-во', input_html: { value: f.object.quantity_in_stock.zero? ? 1 : f.object.quantity_in_stock }
