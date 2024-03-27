@@ -8,9 +8,11 @@ class DepartmentSystemTest < ApplicationSystemTestCase
 
     assert_text 'Отделы магазина'
     assert_text 'Department 1'
+    assert_text 'Всего прибыли'
     assert_link 'Изменить'
     assert_link 'Открыть'
     assert_link 'Удалить'
+    assert_text '20.0 грн.'
   end
 
   test 'visit and submit empty form' do
