@@ -12,7 +12,7 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
 
   controller do
     def scoped_collection
-      super.includes(:department).select('products.*, SUM(orders.price * orders.quantity) AS total_profit').left_joins(:orders).group('products.id')
+      super.joins(:department).select('products.*, departments.name, departments.id, SUM(orders.price * orders.quantity) AS total_profit').left_joins(:orders).group('products.id, departments.name, departments.id').eager_load(:department)
     end
   end
 
