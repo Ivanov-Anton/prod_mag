@@ -20,6 +20,7 @@
 #
 
 product_one:
+  id: 1
   level_of_quality: 1
   name: MyProduct
   price: 10.0
