@@ -15,7 +15,7 @@
 department_one:
   id: 1
   name: Department 1
-  orders_count: 0
+  orders_count: 2
   products_count: 10
   created_at: 2019-10-01 00:00:00
   updated_at: 2019-10-01 00:00:00
