@@ -8,25 +8,31 @@ ActiveAdmin.register Prod::Department, as: 'department' do
     ['name']
   end
 
+  controller do
+    def scoped_collection
+      super.left_joins(:orders).select('departments.*, COALESCE(SUM(orders.price * orders.quantity), 0) AS total_profit').group('departments.id')
+    end
+  end
+
   index download_links: [:csv] do
     selectable_column
     column :name
-    column do |department|
+    column 'Кол-во продуктов' do |department|
       link_to(
         "Кол-во товаров (#{department.products_count})",
         admin_products_path(q: { department_id_eq: department.id }),
         class: 'button'
       )
     end
-    column do |department|
+    column 'Продажи' do |department|
       link_to(
         "Кол-во продаж (#{department.orders_count})",
         admin_orders_path(q: { department_id_eq: department.id }),
         class: 'button'
       )
     end
-    column('Всего прибыли', sortable: false) do |department|
-      "#{number_with_delimiter(department.orders.sum('price * quantity'), delimiter: ' ')} грн."
+    column('Всего прибыли', sortable: :total_profit) do |department|
+      "#{number_with_delimiter(department.total_profit, delimiter: ' ')} грн."
     end
     actions
   end
