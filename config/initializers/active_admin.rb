@@ -322,7 +322,7 @@ ActiveAdmin.setup do |config|
   #
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
-  footer = 'Програмное обеспечение для Директора продовольственного магазина, версия 1.0.0 </br> <a href="https://ivanov.betteruptime.com/"> Статус страница</a>'
+  footer = 'Програмное обеспечение для Директора продовольственного магазина, версия 1.0.0 </br> <a href="https://prod-mag.betteruptime.com"> Статус страница</a>'
   config.footer = footer.html_safe
 
   # == Sorting
