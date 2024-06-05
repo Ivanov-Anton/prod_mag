@@ -19,5 +19,9 @@ class Prod::ProductPolicy < ApplicationPolicy
     user.seo?
   end
 
+  def delete?
+    user.seo?
+  end
+
   Scope = Class.new(ApplicationPolicy::Scope)
 end

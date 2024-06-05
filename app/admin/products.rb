@@ -12,7 +12,7 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
 
   controller do
     def scoped_collection
-      super.joins(:department).select('products.*, departments.name, departments.id, SUM(orders.price * orders.quantity) AS total_profit').left_joins(:orders).group('products.id, departments.name, departments.id').eager_load(:department)
+      super.joins(:department).select('products.*, SUM(orders.price * orders.quantity) AS total_profit').left_joins(:orders).group('products.id, departments.name, departments.id').eager_load(:department)
     end
   end
 
@@ -41,6 +41,8 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.attribute_names
+
     f.inputs do
       f.input :name, input_html: { autofocus: :autofocus }
       f.input :department, as: :searchable_select, hint: link_to('Создать отдел', new_admin_department_path, target: '_blank'), ajax: true
