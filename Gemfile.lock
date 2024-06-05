@@ -58,6 +58,9 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_admin_sidebar (2.0.0)
+      activeadmin
+    active_admin_theme (1.1.4)
     activeadmin (3.2.0)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1)
@@ -103,12 +106,14 @@ GEM
       ruby2_keywords (>= 0.0.2)
     ast (2.4.2)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bigdecimal (3.1.6)
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
     byebug (11.1.3)
+    cancancan (3.6.1)
     capybara (3.40.0)
       addressable
       matrix
@@ -125,6 +130,12 @@ GEM
     debug (1.9.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    devise (4.9.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     drb (2.2.1)
     erubi (1.12.0)
     faker (3.2.3)
@@ -205,6 +216,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
+    orm_adapter (0.5.0)
     parallel (1.12.1)
     parser (3.2.1.1)
       ast (~> 2.4.1)
@@ -214,6 +226,8 @@ GEM
     public_suffix (5.0.4)
     puma (6.4.2)
       nio4r (~> 2.0)
+    pundit (2.3.2)
+      activesupport (>= 3.0.0)
     racc (1.7.3)
     rack (3.0.9.1)
     rack-session (2.0.0)
@@ -322,6 +336,8 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -342,19 +358,24 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_admin_sidebar (~> 2.0)
+  active_admin_theme (~> 1.1)
   activeadmin
   activeadmin-searchable_select
   annotate!
   bootsnap
   byebug
+  cancancan (~> 3.6)
   capybara
   debug
+  devise (~> 4.9, >= 4.9.3)
   faker
   importmap-rails
   jbuilder
   launchy
   pg (~> 1.1)
   puma (>= 5.0)
+  pundit (~> 2.3)
   rails (~> 7.1.3, >= 7.1.3.2)
   rubocop
   rubocop-rails

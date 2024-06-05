@@ -77,3 +77,12 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+
+gem 'devise', '~> 4.9', '>= 4.9.3'
+gem "cancancan", "~> 3.6"
+
+gem "active_admin_sidebar", "~> 2.0"
+
+gem "active_admin_theme", "~> 1.1"
+
+gem "pundit", "~> 2.3"
