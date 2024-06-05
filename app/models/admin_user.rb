@@ -42,4 +42,8 @@ class AdminUser < ApplicationRecord
     seo: CONST::SEO_ROLE_NAME,
     manager: CONST::MANAGER_ROLE_NAME
   }, _default: CONST::DEFAULT_ROLE
+
+  def display_name
+    "#{role} | #{email}"
+  end
 end
