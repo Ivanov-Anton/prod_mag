@@ -86,7 +86,7 @@ module Prod
 
     belongs_to :department, class_name: 'Prod::Department', optional: true
     belongs_to :product_category, class_name: 'Prod::ProductCategory', optional: true
-    has_many :orders, class_name: 'Prod::Order', dependent: nil
+    has_many :orders, class_name: 'Prod::Order', dependent: :destroy
 
     def self.ransackable_attributes(_auth_object = nil)
       %w[
