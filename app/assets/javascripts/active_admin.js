@@ -1,5 +1,6 @@
 //= require active_admin/base
 //= require active_admin/searchable_select
+ //= require active_admin_sidebar
 
 $(document).ready(function () {
   $('.modal-link').click(function (event) {
