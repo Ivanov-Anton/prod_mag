@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Prod::Product, as: 'find_empty_department' do
-  menu label: 'Какие товары по отделам отсутствуют', parent: 'Actions'
+  menu label: 'Які товари відсутні (по відділам)', parent: 'Звіти'
   actions :index
   config.filters = false
 
   before_action only: [:index] do
     if scoped_collection.empty?
-      flash[:notice] = 'Все отделы заполнены товарами'
+      flash[:notice] = 'Всі відділи заповлені товарами'
       redirect_back(fallback_location: '')
     end
   end
@@ -18,7 +18,7 @@ ActiveAdmin.register Prod::Product, as: 'find_empty_department' do
     end
   end
 
-  index download_links: false, title: 'Какие товары по отделам отсутствуют' do
+  index download_links: false, title: 'Які товари відсутні (по відділам)' do
     selectable_column
     column :name
     column :price

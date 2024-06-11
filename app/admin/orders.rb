@@ -42,7 +42,7 @@ ActiveAdmin.register Prod::Order, as: 'order' do
       f.input :product, as: :searchable_select, ajax: { resource: 'Product' }
     end
     f.actions do
-      verb = f.object.persisted? ? 'Редактировать' : 'Создать'
+      verb = f.object.persisted? ? 'Резагувати' : 'Створити'
       f.action :submit, label: verb
       f.cancel_link
     end

@@ -17,21 +17,21 @@ ActiveAdmin.register Prod::Department, as: 'department' do
   index download_links: [:csv] do
     selectable_column
     column :name
-    column 'Кол-во продуктов' do |department|
+    column 'Кількість продуктів' do |department|
       link_to(
-        "Кол-во товаров (#{department.products_count})",
+        "Кількість товарів (#{department.products_count})",
         admin_products_path(q: { department_id_eq: department.id }),
         class: 'button'
       )
     end
-    column 'Продажи' do |department|
+    column 'Продажі' do |department|
       link_to(
-        "Кол-во продаж (#{department.orders_count})",
+        "Кількість продажів (#{department.orders_count})",
         admin_orders_path(q: { department_id_eq: department.id }),
         class: 'button'
       )
     end
-    column('Всего прибыли', sortable: :total_profit) do |department|
+    column('Всього прибутку', sortable: :total_profit) do |department|
       "#{number_with_delimiter(department.total_profit, delimiter: ' ')} грн."
     end
     actions
@@ -52,7 +52,7 @@ ActiveAdmin.register Prod::Department, as: 'department' do
 
     f.actions do
       f.add_create_another_checkbox
-      verb = f.object.persisted? ? 'Редактировать' : 'Создать'
+      verb = f.object.persisted? ? 'Редагувати' : 'Створити'
       f.action :submit, label: verb
       f.cancel_link
     end
