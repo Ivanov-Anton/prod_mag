@@ -1,0 +1,99 @@
+ua:
+  devise:
+    sessions:
+      admin_user:
+        signed_in: Успішно ввійшли
+  activerecord:
+    models:
+      product:
+        one: "Товар"
+        other: "Товари"
+      product_category:
+        one: "Категорія товару"
+        other: "Категорії товарів"
+      department:
+        one: "Відділ магазина"
+        other: "Відділи магазина"
+      order:
+        one: "Продаж"
+        other: "Продажі"
+    attributes:
+      prod/order:
+        product: "Товар"
+        quantity: "Кількість"
+        price: "Ціна"
+        total_price: "Підсумкова ціна"
+        created_at: "Створено"
+        updated_at: "Відредаговано"
+      prod/product:
+        level_of_quality: "Сорт товару"
+        size_of_batch: "Розмір партії"
+        name: "Імʼя"
+        price: "Ціна"
+        quantity_in_stock: "Кількість на складі"
+        quantity_sold: "Кількість продано"
+        type_of_measure: "Система вимірювання"
+        created_at: "Створено"
+        updated_at: "Відредаговано"
+        product_category: "Категорія товару"
+        department: "Відділ магазину"
+      prod/department:
+        name: "Імʼя"
+        created_at: "Створено"
+        updated_at: "Відредаговано"
+      prod/product_category:
+        name: "Імʼя"
+        created_at: "Створено"
+        updated_at: "Відредаговано"
+    errors:
+      messages:
+        record_invalid: "Перевірка провалена %{errors}"
+      models:
+        prod/order:
+          attributes:
+            product:
+              blank: "не может бути пустим"
+        prod/product:
+          attributes:
+            name:
+              blank: "не может бути пустим"
+            level_of_quality:
+              blank: "не может бути пустим"
+            price:
+              blank: "не может бути пустим"
+            quantity_in_stock:
+              blank: "не может бути пустим"
+            type_of_measure:
+              blank: "не может бути пустим"
+            department:
+              blank: "не может бути пустим"
+            product_category:
+              blank: "не может бути пустим"
+            size_of_batch:
+              blank: "не может бути пустим"
+  active_admin:
+    any: Будь-який
+    filters:
+      buttons:
+        clear: Очистити
+        filter: Відфільтрувати таблицю
+    view: "Детальніше"
+    edit: "Редагувати"
+    delete: "Знищити"
+    empty: "Порожній"
+    previous: "Попередній"
+    next: "Наступна"
+    delete_confirmation: "Ви дійсно хочете знищити?"
+    create_model: "Створити %{model}"
+    download: Завантажити
+    logout: Вийти з аккаунту
+    cancel: Закрити
+    dashboard: 'Домашня сторінка'
+    pagination:
+      one_page: "Результат: <b>%{n}</b> %{model}"
+      multiple: Перегляд %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{total}</b> вцілому
+    dashboard_welcome:
+      welcome: 'Вітаю вас на сайті'
+      call_to_action: Для того щоб почати користуватись створіть товар та категорію для нього
+
+    create_another: Створити ще

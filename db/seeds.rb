@@ -3,39 +3,39 @@
 # Seeds for Development env
 #
 deps = [
-  'Фрукты и овощи', 'Мясной отдел', 'Молочные продукты', 'Хлебобулочные изделия', 'Напитки', 'Морепродукты',
-  'Специи и приправы', 'Детское питание и товары для малышей', 'Кофе и чай', 'Спортивное питание'
+  'Фрукти і овочі', 'Мясний відділ', 'Молочні продукти', 'Хлібобулочні вироби', 'Напої', 'Морепродукти',
+  'Спеції та приправи', 'Дитяче харчування та товари для малюків', 'Кофе та чай', 'Спортивне харчування'
 ]
 deps.each do |item|
   Prod::Department.find_or_create_by!(name: item)
 end
 
-['Овощи', 'Фрукты', 'Молочные продукты', 'Мясо', 'Хлебобулочные изделия', 'Напитки', 'Рыба', 'Приправы'].each do |item|
+['Овочі', 'Фрукти', 'Молочні продукти', 'Мʼясо', 'Хлібобулочні вироби', 'Напої', 'Рыба', 'Приправы'].each do |item|
   Prod::ProductCategory.find_or_create_by!(name: item)
 end
 
 # Create Products
 {
-  { product_category_name: 'Овощи', department_name: 'Фрукты и овощи' } => %w[Помидоры Огурцы Морковь Картофель Лук],
-  { product_category_name: 'Фрукты', department_name: 'Фрукты и овощи' } => %w[Яблоки Бананы Апельсины Груши Киви],
-  { product_category_name: 'Мясо', department_name: 'Мясной отдел' } => %w[Говядина Свинина Курица Рыба Индейка],
-  { product_category_name: 'Молочные продукты', department_name: 'Молочные продукты' } => %w[
-    Молоко Сыр Творог Йогурт Масло
+  { product_category_name: 'Овочі', department_name: 'Фрукти і овочі' } => %w[Помідори Огірки Марква Картопля Лук],
+  { product_category_name: 'Фрукти', department_name: 'Фрукти і овочі' } => %w[Яблука Банани Апельсини Груша Ківі],
+  { product_category_name: 'Мʼясо', department_name: 'Мясний відділ' } => %w[Яловичина Свинина Кірка Ріба Індичка],
+  { product_category_name: 'Молочні продукти', department_name: 'Молочні продукти' } => %w[
+    Молоко Сір Творог Йогурт Масло
   ],
-  { product_category_name: 'Хлебобулочные изделия', department_name: 'Хлебобулочные изделия' } => [
-    'Белый хлеб',
-    'Ржаной хлеб',
+  { product_category_name: 'Хлібобулочні вироби', department_name: 'Хлібобулочні вироби' } => [
+    'Білий хліб',
+    'Житній хліб',
     'Булочки',
     'Багет',
     'Пончики'
   ],
-  { product_category_name: 'Напитки', department_name: 'Напитки' } => %w[Coca-Cola Моршинская Fonts Pepsi Sandora],
-  { product_category_name: 'Рыба', department_name: 'Морепродукты' } => %w[Лосось Семга Скумбрия Тунец Судак],
-  { product_category_name: 'Приправы', department_name: 'Специи и приправы' } => %w[
+  { product_category_name: 'Напої', department_name: 'Напої' } => %w[Coca-Cola Моршинская Fonts Pepsi Sandora],
+  { product_category_name: 'Риба', department_name: 'Морепродукти' } => %w[Лосось Сьомга Скумбрія Тунець Судак],
+  { product_category_name: 'Приправы', department_name: 'Спеції та приправи' } => %w[
     Паприка Куркума Карри Кориандр Кинза
   ],
-  { product_category_name: 'Специи', department_name: 'Специи и приправы' } => [
-    'Черный перец', 'Белый перец', 'Красный перец', 'Зеленый перец', 'Морская соль'
+  { product_category_name: 'Специи', department_name: 'Спеції та приправи' } => [
+    'Червоний перець', 'Білий перець', 'Золотий перець', 'Зелений перець', 'Морская сіль'
   ]
 }.each_pair do |element, product_names|
   product_category_name = element.fetch(:product_category_name)

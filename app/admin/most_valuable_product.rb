@@ -2,7 +2,7 @@
 
 ActiveAdmin.register Prod::Product, as: 'most_valuable_product' do
   actions :index
-  menu label: 'Какой товар дал максимальную прибыль в магазине?', parent: 'Actions'
+  menu label: 'Які товари принесли максимальний прибуток в магазині?', parent: 'Звіти'
   config.filters = false
   config.paginate = false
   config.max_per_page = 1
@@ -13,12 +13,12 @@ ActiveAdmin.register Prod::Product, as: 'most_valuable_product' do
     end
   end
 
-  index download_links: false, title: 'Какой товар дал максимальную прибыль в магазине?' do
+  index download_links: false, title: 'Які товари принесли максимальний прибуток в магазині?' do
     id_column
     column :name
     column :price
     column :quantity_sold
-    column 'Прибыль' do |product|
+    column 'Прибуток' do |product|
       product.orders.map { |order| order.price * order.quantity }.sum
     end
   end

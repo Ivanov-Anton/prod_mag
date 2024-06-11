@@ -29,7 +29,7 @@ ActiveAdmin.register Prod::ProductCategory, as: 'product_category' do
 
     f.actions do
       f.add_create_another_checkbox
-      verb = f.object.persisted? ? 'Редактировать' : 'Создать'
+      verb = f.object.persisted? ? 'Редагувати' : 'Створити'
       f.action :submit, label: verb
       f.cancel_link
     end

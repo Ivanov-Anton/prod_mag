@@ -28,7 +28,7 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
     column :type_of_measure do |product|
       Prod::Product::CONST::TYPES_OF_MEASURE.invert.fetch(product.type_of_measure)
     end
-    column 'Прибыль' do |product|
+    column 'Прибуток' do |product|
       number_with_delimiter(product.total_profit, delimiter: ' ')
     end
     actions
@@ -45,17 +45,17 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
 
     f.inputs do
       f.input :name, input_html: { autofocus: :autofocus }
-      f.input :department, as: :searchable_select, hint: link_to('Создать отдел', new_admin_department_path, target: '_blank'), ajax: true
+      f.input :department, as: :searchable_select, hint: link_to('Створити відділ', new_admin_department_path, target: '_blank'), ajax: true
       f.input :level_of_quality, as: :searchable_select, collection: Prod::Product::CONST::PLAIN_LEVEL_OF_QUALITIES
       f.input :type_of_measure, as: :searchable_select, collection: Prod::Product::CONST::TYPES_OF_MEASURE, selected: Prod::Product::CONST::TYPES_OF_MEASURE_VALUE_EACH
-      f.input :price, as: :number, placeholder: 'Цена в грн', hint: 'Цена за один товар'
-      f.input :quantity_in_stock, as: :number, label: 'Кол-во', input_html: { value: f.object.quantity_in_stock.zero? ? 1 : f.object.quantity_in_stock }
-      f.input :product_category, as: :searchable_select, hint: link_to('Создать категорию', new_admin_product_category_path, target: '_blank'), ajax: true
+      f.input :price, as: :number, placeholder: 'Ціна в грн', hint: 'Ціна за один товар'
+      f.input :quantity_in_stock, as: :number, label: 'Кількість', input_html: { value: f.object.quantity_in_stock.zero? ? 1 : f.object.quantity_in_stock }
+      f.input :product_category, as: :searchable_select, hint: link_to('Створити категорію', new_admin_product_category_path, target: '_blank'), ajax: true
       f.input :size_of_batch
     end
 
     f.actions do
-      verb = f.object.persisted? ? 'Обновить' : 'Создать'
+      verb = f.object.persisted? ? 'Оновити' : 'Створити'
       f.action :submit, label: "#{verb}"
       f.cancel_link
     end
