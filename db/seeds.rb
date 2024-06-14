@@ -70,14 +70,23 @@ rescue ActiveRecord::RecordInvalid => _e
   next
 end
 
-if AdminUser.find_by(role: :seo, email: 'seo@seo.com').nil?
-  AdminUser.create!(role: :seo, email: 'seo@seo.com', password: 'password', password_confirmation: 'password')
+if AdminUser.find_by(
+  role: :seo, email: 'seo@seo.com'
+).nil?
+  AdminUser.create!(role: :seo, email: 'seo@seo.com', password: 'password',
+                    password_confirmation: 'password')
 end
 
-if AdminUser.find_by(role: :manager, email: 'manager@manager.com').nil?
-  AdminUser.create!(role: :manager, email: 'manager@manager.com', password: 'password', password_confirmation: 'password')
+if AdminUser.find_by(
+  role: :manager, email: 'manager@manager.com'
+).nil?
+  AdminUser.create!(role: :manager, email: 'manager@manager.com', password: 'password',
+                    password_confirmation: 'password')
 end
 
-if AdminUser.find_by(role: :guest, email: 'guest@guest.com').nil?
-  AdminUser.create!(role: :guest, email: 'guest@guest.com', password: 'password', password_confirmation: 'password')
+if AdminUser.find_by(
+  role: :guest, email: 'guest@guest.com'
+).nil?
+  AdminUser.create!(role: :guest, email: 'guest@guest.com', password: 'password',
+                    password_confirmation: 'password')
 end

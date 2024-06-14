@@ -29,7 +29,10 @@ module Prod
       if product.present?
         errors.add(:base, 'Товары закончились') if product.quantity_in_stock.zero?
         string = product.quantity_in_stock > 1 ? 'товаров' : 'товар'
-        errors.add(:base, "Недостаточно товаров на складе, доступно только #{product.quantity_in_stock} #{string}") if product.quantity_in_stock.positive? && quantity > product.quantity_in_stock
+        if product.quantity_in_stock.positive? && quantity > product.quantity_in_stock
+          errors.add(:base,
+                     "Недостаточно товаров на складе, доступно только #{product.quantity_in_stock} #{string}")
+        end
       end
     end
 
@@ -39,8 +42,10 @@ module Prod
       self.department_id = product.department_id
       self.product_category_id = product.product_category_id
 
-      product.update!(orders_count: product.orders_count + 1, quantity_in_stock: product.quantity_in_stock - quantity, quantity_sold: product.quantity_sold + quantity)
-      product.department.update!(orders_count: product.department.orders_count + 1, products_count: product.quantity_in_stock)
+      product.update!(orders_count: product.orders_count + 1, quantity_in_stock: product.quantity_in_stock - quantity,
+                      quantity_sold: product.quantity_sold + quantity)
+      product.department.update!(orders_count: product.department.orders_count + 1,
+                                 products_count: product.quantity_in_stock)
     end
 
     def self.ransackable_attributes(_auth_object = nil)

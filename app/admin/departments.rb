@@ -10,7 +10,10 @@ ActiveAdmin.register Prod::Department, as: 'department' do
 
   controller do
     def scoped_collection
-      super.left_joins(:orders).select('departments.*, COALESCE(SUM(orders.price * orders.quantity), 0) AS total_profit').group('departments.id')
+      super
+        .left_joins(:orders)
+        .select('departments.*, COALESCE(SUM(orders.price * orders.quantity), 0) AS total_profit')
+        .group('departments.id')
     end
   end
 
@@ -44,7 +47,7 @@ ActiveAdmin.register Prod::Department, as: 'department' do
   end
 
   form do |f|
-    f.semantic_errors *f.object.errors.attribute_names
+    f.semantic_errors(*f.object.errors.attribute_names)
 
     f.inputs do
       f.input :name, input_html: { autofocus: :autofocus }

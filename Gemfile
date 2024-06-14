@@ -38,7 +38,7 @@ gem 'jbuilder'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[ windows jruby ]
+gem 'tzinfo-data', platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
@@ -47,30 +47,30 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'activeadmin'
-gem 'sass-rails'
 gem 'activeadmin-searchable_select'
 gem 'faker'
+gem 'sass-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[ mri windows ]
   gem 'byebug'
+  gem 'debug', platforms: %i[mri windows]
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'web-console'
   gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
+  gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'bundle-audit'
   gem 'brakeman'
+  gem 'bundle-audit'
 end
 
 group :test do
@@ -80,11 +80,11 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+gem 'cancancan', '~> 3.6'
 gem 'devise', '~> 4.9', '>= 4.9.3'
-gem "cancancan", "~> 3.6"
 
-gem "active_admin_sidebar", "~> 2.0"
+gem 'active_admin_sidebar', '~> 2.0'
 
-gem "active_admin_theme", "~> 1.1"
+gem 'active_admin_theme', '~> 1.1'
 
-gem "pundit", "~> 2.3"
+gem 'pundit', '~> 2.3'

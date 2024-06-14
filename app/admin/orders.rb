@@ -13,12 +13,12 @@ ActiveAdmin.register Prod::Order, as: 'order' do
     column :price
     column :product
     column :quantity do |order|
-      case order&.product&.type_of_measure
-      when Prod::Product::CONST::TYPES_OF_MEASURE_VALUE_EACH
-        suffix = 'шт'
-      else
-        suffix = Prod::Product::CONST::TYPES_OF_MEASURE.invert.fetch(order&.product&.type_of_measure, 'asd')
-      end
+      suffix = case order&.product&.type_of_measure
+               when Prod::Product::CONST::TYPES_OF_MEASURE_VALUE_EACH
+                 'шт'
+               else
+                 Prod::Product::CONST::TYPES_OF_MEASURE.invert.fetch(order&.product&.type_of_measure, 'asd')
+               end
       "#{order.quantity} #{suffix}"
     end
     column :total_price do |order|
@@ -35,7 +35,7 @@ ActiveAdmin.register Prod::Order, as: 'order' do
   end
 
   form do |f|
-    f.semantic_errors *f.object.errors.attribute_names
+    f.semantic_errors(*f.object.errors.attribute_names)
 
     f.inputs do
       f.input :quantity, as: :number, input_html: { autofocus: :autofocus }

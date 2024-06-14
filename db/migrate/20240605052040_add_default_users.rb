@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class AddDefaultUsers < ActiveRecord::Migration[7.1]
   def up
     AdminUser.create!(email: 'seo@seo.com', password: 'password', password_confirmation: 'password', role: :seo)
-    AdminUser.create!(email: 'manager@manager.com', password: 'password', password_confirmation: 'password', role: :manager)
+    AdminUser.create!(email: 'manager@manager.com', password: 'password', password_confirmation: 'password',
+                      role: :manager)
   end
 
   def down

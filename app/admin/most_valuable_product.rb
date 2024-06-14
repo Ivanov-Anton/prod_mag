@@ -9,7 +9,12 @@ ActiveAdmin.register Prod::Product, as: 'most_valuable_product' do
 
   controller do
     def scoped_collection
-      Prod::Product.joins(:orders).group('products.id').select('products.*, SUM(orders.price * orders.quantity) AS total_price').order(total_price: :desc).limit(1)
+      Prod::Product
+        .joins(:orders)
+        .group('products.id')
+        .select('products.*, SUM(orders.price * orders.quantity) AS total_price')
+        .order(total_price: :desc)
+        .limit(1)
     end
   end
 

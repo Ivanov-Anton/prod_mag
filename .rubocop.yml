@@ -13,6 +13,7 @@ AllCops:
 Style/Documentation:
   Exclude:
     - 'db/migrate/**/*'
+    - 'app/policies/**/*'
 
 Metrics/MethodLength:
   Exclude:
