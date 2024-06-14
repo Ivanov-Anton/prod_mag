@@ -23,6 +23,9 @@ ActiveAdmin.setup do |config|
     end
   end
   config.include_default_association_filters = true
-  footer = 'Програмное забеспечення для Директора продовольчого магазина, версия 1.0.0 </br> <a href="https://prod-mag.betteruptime.com"> Статус сторінка</a>'
+  greeting = 'Програмное забеспечення для Директора продовольчого магазина'
+  separator = ' , '
+  version_info = 'версия 1.0.0 </br> <a href="https://prod-mag.betteruptime.com"> Статус сторінка</a>'
+  footer = [greeting, separator, version_info].join
   config.footer = footer.html_safe
 end

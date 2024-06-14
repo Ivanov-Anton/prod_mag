@@ -21,7 +21,7 @@ ActiveAdmin.register Prod::ProductCategory, as: 'product_category' do
   end
 
   form do |f|
-    f.semantic_errors *f.object.errors.attribute_names
+    f.semantic_errors(*f.object.errors.attribute_names)
 
     f.inputs do
       f.input :name, input_html: { autofocus: :autofocus }

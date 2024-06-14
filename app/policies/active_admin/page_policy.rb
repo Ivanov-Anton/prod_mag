@@ -1,11 +1,15 @@
-class ActiveAdmin::PagePolicy < ApplicationPolicy
-  def show?
-    user.seo? || user.manager? || (user.guest? && record.name == 'Dashboard')
-  end
+# frozen_string_literal: true
 
-  class Scope < ApplicationPolicy::Scope
-    def resolve
-     scope.all
+module ActiveAdmin
+  class PagePolicy < ApplicationPolicy
+    def show?
+      user.seo? || user.manager? || (user.guest? && record.name == 'Dashboard')
+    end
+
+    class Scope < ApplicationPolicy::Scope
+      def resolve
+        scope.all
+      end
     end
   end
 end

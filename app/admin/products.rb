@@ -7,12 +7,18 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
   filter :department, as: :searchable_select, ajax: true
 
   permit_params do
-    [:level_of_quality, :name, :orders_count, :price, :product_category_id, :quantity_in_stock, :quantity_sold, :department_id, :type_of_measure, :size_of_batch]
+    %i[level_of_quality name orders_count price product_category_id quantity_in_stock quantity_sold
+       department_id type_of_measure size_of_batch]
   end
 
   controller do
     def scoped_collection
-      super.joins(:department).select('products.*, SUM(orders.price * orders.quantity) AS total_profit').left_joins(:orders).group('products.id, departments.name, departments.id').eager_load(:department)
+      super
+        .joins(:department)
+        .select('products.*, SUM(orders.price * orders.quantity) AS total_profit')
+        .left_joins(:orders)
+        .group('products.id, departments.name, departments.id')
+        .eager_load(:department)
     end
   end
 
@@ -41,22 +47,30 @@ ActiveAdmin.register Prod::Product, as: 'Product' do
   end
 
   form do |f|
-    f.semantic_errors *f.object.errors.attribute_names
+    f.semantic_errors(*f.object.errors.attribute_names)
 
     f.inputs do
       f.input :name, input_html: { autofocus: :autofocus }
-      f.input :department, as: :searchable_select, hint: link_to('Створити відділ', new_admin_department_path, target: '_blank'), ajax: true
+      f.input :department, as: :searchable_select,
+                           ajax: true,
+                           hint: link_to('Створити', new_admin_department_path, AaHelper::SECUTORY_OPTIONS)
       f.input :level_of_quality, as: :searchable_select, collection: Prod::Product::CONST::PLAIN_LEVEL_OF_QUALITIES
-      f.input :type_of_measure, as: :searchable_select, collection: Prod::Product::CONST::TYPES_OF_MEASURE, selected: Prod::Product::CONST::TYPES_OF_MEASURE_VALUE_EACH
+      f.input :type_of_measure, as: :searchable_select, collection: Prod::Product::CONST::TYPES_OF_MEASURE,
+                                selected: Prod::Product::CONST::TYPES_OF_MEASURE_VALUE_EACH
       f.input :price, as: :number, placeholder: 'Ціна в грн', hint: 'Ціна за один товар'
-      f.input :quantity_in_stock, as: :number, label: 'Кількість', input_html: { value: f.object.quantity_in_stock.zero? ? 1 : f.object.quantity_in_stock }
-      f.input :product_category, as: :searchable_select, hint: link_to('Створити категорію', new_admin_product_category_path, target: '_blank'), ajax: true
+      f.input :quantity_in_stock, as: :number, label: 'Кількість',
+                                  input_html: {
+                                    value: f.object.quantity_in_stock.zero? ? 1 : f.object.quantity_in_stock
+                                  }
+      f.input :product_category, as: :searchable_select,
+                                 ajax: true,
+                                 hint: link_to('Створити', new_admin_product_category_path, AaHelper::SECUTORY_OPTIONS)
       f.input :size_of_batch
     end
 
     f.actions do
       verb = f.object.persisted? ? 'Оновити' : 'Створити'
-      f.action :submit, label: "#{verb}"
+      f.action :submit, label: verb.to_s
       f.cancel_link
     end
   end

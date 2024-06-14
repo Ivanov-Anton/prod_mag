@@ -1,23 +1,27 @@
-class Prod::DepartmentPolicy < ApplicationPolicy
-  def index?
-    user.manager? || user.seo?
-  end
+# frozen_string_literal: true
 
-  def show?
-    user.manager? || user.seo?
-  end
+module Prod
+  class DepartmentPolicy < ApplicationPolicy
+    def index?
+      user.manager? || user.seo?
+    end
 
-  def update?
-    user.manager? || user.seo?
-  end
+    def show?
+      user.manager? || user.seo?
+    end
 
-  def create?
-    user.manager? || user.seo?
-  end
+    def update?
+      user.manager? || user.seo?
+    end
 
-  def destroy?
-    user.seo?
-  end
+    def create?
+      user.manager? || user.seo?
+    end
 
-  Scope = Class.new(ApplicationPolicy::Scope)
+    def destroy?
+      user.seo?
+    end
+
+    Scope = Class.new(ApplicationPolicy::Scope)
+  end
 end

@@ -14,14 +14,13 @@
 module Prod
   # no doc
   class Department < ApplicationRecord
-
     has_many :products, class_name: 'Prod::Product'
     has_many :orders, class_name: 'Prod::Order'
 
     validates :name, presence: { message: 'Имя не может быть пустым' }
 
     def self.ransackable_associations(_auth_object = nil)
-      ['products', 'orders']
+      %w[products orders]
     end
 
     def self.ransackable_attributes(_auth_object = nil)
