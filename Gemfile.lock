@@ -112,6 +112,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
+    brakeman (6.1.2)
+      racc
     builder (3.3.0)
     bundle-audit (0.1.0)
       bundler-audit
@@ -379,6 +381,7 @@ DEPENDENCIES
   activeadmin-searchable_select
   annotate!
   bootsnap
+  brakeman
   bundle-audit
   byebug
   cancancan (~> 3.6)
