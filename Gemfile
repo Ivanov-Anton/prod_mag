@@ -87,4 +87,4 @@ gem 'active_admin_sidebar', '~> 2.0'
 
 gem 'active_admin_theme', '~> 1.1'
 
-gem 'pundit', '~> 2.3'
+gem 'pundit', '~> 2.4'
